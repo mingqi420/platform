@@ -11,7 +11,19 @@
     <modules>
         <module>shiro</module>
         <module>thread</module>
+        <module>web</module>
     </modules>
-
+ <dependencies>
+     <dependency>
+         <groupId>mysql</groupId>
+         <artifactId>mysql-connector-java</artifactId>
+         <scope>runtime</scope>
+     </dependency>
+     <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-test</artifactId>
+         <scope>test</scope>
+     </dependency>
+ </dependencies>
 
 </project>

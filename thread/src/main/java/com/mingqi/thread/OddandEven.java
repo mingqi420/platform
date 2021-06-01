@@ -8,6 +8,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author lidefu
  * @date 2021年05月31日 10:55
  * 两个线程交替打印奇偶数
+ * object wait()必须在synchronized（同步锁）下使用
+ * object wait()必须要通过Nodify()方法进行唤醒
  */
 public class OddandEven {
     private Object object=new Object();
@@ -67,6 +69,9 @@ public class OddandEven {
 
 /**
  * 两个线程交替打印奇偶数
+ *  Condition的await、signal、signalAll
+ * condition await() 必须和Lock（互斥锁/共享锁）配合使用
+ * condition await() 必须通过 signal() 方法进行唤醒
  */
 class OddandEvenCondition{
 
@@ -83,7 +88,7 @@ class OddandEvenCondition{
                     condition.signal();
                 }
                 else {
-                    condition.wait();
+                    condition.await();
                 }
             }
             catch (InterruptedException e){
@@ -104,7 +109,7 @@ class OddandEvenCondition{
                     condition.signal();
                 }
                 else {
-                    condition.wait();
+                    condition.await();
                 }
             }
             catch (InterruptedException e){
@@ -114,5 +119,21 @@ class OddandEvenCondition{
                 lock.unlock();
             }
         }
+    }
+
+    public static void main(String[] args) {
+      final OddandEvenCondition oddandEvenCondition=new OddandEvenCondition();
+      Thread thread1=new Thread(new Runnable() {
+            public void run() {
+                oddandEvenCondition.odd();
+            }
+        },"奇数线程");
+        Thread thread2=new Thread(new Runnable() {
+            public void run() {
+                oddandEvenCondition.Even();
+            }
+        },"偶数线程");
+        thread1.start();
+        thread2.start();
     }
 }

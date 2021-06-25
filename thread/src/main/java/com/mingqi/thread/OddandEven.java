@@ -10,6 +10,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * 两个线程交替打印奇偶数
  * object wait()必须在synchronized（同步锁）下使用
  * object wait()必须要通过Nodify()方法进行唤醒
+ *
+ * wait和notify都是Object中的方法
+ * wait和notify执行前线程都必须获得对象锁
+ * wait的作用是使当前线程进行等待
+ * notify的作用是通知其他等待当前线程的对象锁的线程
  */
 public class OddandEven {
     private Object object=new Object();

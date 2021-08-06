@@ -24,6 +24,7 @@
         <module>shiro</module>
         <module>thread</module>
         <module>web</module>
+        <module>linkedList</module>
     </modules>
  <dependencies>
 

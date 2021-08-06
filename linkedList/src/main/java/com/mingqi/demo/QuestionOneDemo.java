@@ -2,10 +2,12 @@ package com.mingqi.demo;
 
 
 
+import com.mingqi.link.ListNode;
 import com.mingqi.link.MyLinkedList;
 import com.mingqi.link.Node;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -66,6 +68,37 @@ public class QuestionOneDemo {
         reversePrint2(head.getNext());
         System.out.println(head.getElement());
     }
+   //栈
+    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        Stack<Integer> stack = new Stack<Integer>();    //posh + pop 搞定
+        while(listNode != null){
+            stack.push(listNode.val);
+            listNode = listNode.next;
+        }
+        while(!stack.isEmpty()){
+            res.add(stack.pop());
+        }
+        return res;
+    }
+    //递归
+    ArrayList<Integer> res = new ArrayList<Integer>();//一定要在函数之前定义
+    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+        if(listNode!=null){
+            printListFromTailToHead(listNode.next);    //没有用到printListFromTailToHead的返回值
+            res.add(listNode.val);    //这个在递归后面，则可以做到倒序；如果在递归前就是正序
+        }
+        return res;
+    }
+    // 头茬发
+    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+        ArrayList<Integer>mylist=new ArrayList<>();//含有<>和（）；别忘了new
+        while(listNode!=null){//直接用null对应listNode就行
+            mylist.add(0,listNode.val);//list.add(0,value)在list的头部插入值
+            listNode=listNode.next;//Java这样就不用到->指针了，只会用到STL里面定义过的操作
+        }
+        return mylist;
+    }
     /**
      * 用来测试的方法
      */
@@ -81,14 +114,18 @@ public class QuestionOneDemo {
         myLinkedList.insert(newNode2, 2);
         myLinkedList.insert(newNode3, 3);
 
-        System.out.println("-----完整的链表start-----");
+        System.out.println("----原链表 start----");
         myLinkedList.showAll();
-        System.out.println("-----完整的链表end-------");
+        System.out.println("----原链表 end----");
         System.out.println("");
 
-        System.out.println("-----反转之后的链表start-----");
+        System.out.println("====从尾到头打印链表 start====");
         reversePrint(myLinkedList.getHeadNode());
+        System.out.println("====从尾到头打印链表 end====");
+        System.out.println("");
+
+        System.out.println("----原链表(依然保留了原来的顺序) start----");
         myLinkedList.showAll();
-        System.out.println("-----反转之后的链表end-------");
+        System.out.println("----原链表(依然保留了原来的顺序) end----");
     }
 }

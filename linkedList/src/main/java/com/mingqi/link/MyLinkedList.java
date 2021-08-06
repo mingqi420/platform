@@ -37,9 +37,11 @@ public class MyLinkedList {
         tempNode = headNode;
         int i = 0;
         while (i < position) {
+            // tempNode 节点 向后移动 一个位置
             tempNode = tempNode.next;
             i++;
         }
+        //要插入的数据的 地址域 等于插入位置的地址域
         newNode.next = tempNode.next;
         tempNode.next = newNode;
     }

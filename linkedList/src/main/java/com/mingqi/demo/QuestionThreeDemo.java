@@ -80,4 +80,33 @@ public class QuestionThreeDemo {
         myLinkedList.showAll();
         System.out.println("-----反转之后的链表end-------");
     }
+    /**
+     * 查找链表中的倒数第k个节点的方法2
+     *
+     * @param myLinkedList 需要查找的链表作为参数传递进来
+     * @param k            代表倒数第k个节点的位置
+     * @return
+     */
+    public Node reciprocalFindNode2(MyLinkedList myLinkedList, int k) throws Exception {
+        // 如果头节点为null，说明链表为空
+        if (myLinkedList.getHeadNode() == null) {
+            throw new Exception("链表为空");
+        }
+
+        Node first = myLinkedList.getHeadNode();
+        Node second = myLinkedList.getHeadNode();
+
+        // 让second节点往后挪 k-1 个位置
+        for (int i = 0; i < k - 1; i++) {
+            second = second.getNext();
+        }
+
+        // 让first节点和second节点整体向后移动，直到second节点走到最后一个节点
+        while (second.getNext() != null) {
+            first = first.getNext();
+            second = second.getNext();
+        }
+        // 当second节点走到最后一个节点时，first节点就是我们要找的节点
+        return first;
+    }
 }

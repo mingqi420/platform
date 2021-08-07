@@ -69,8 +69,8 @@ public class QuestionOneDemo {
         System.out.println(head.getElement());
     }
    //栈
-    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
-        ArrayList<Integer> res = new ArrayList<Integer>();
+    public ArrayList<Integer> printListFromTailToHeadStack(ListNode listNode) {
+     /*   ArrayList<Integer> res = new ArrayList<Integer>();
         Stack<Integer> stack = new Stack<Integer>();    //posh + pop 搞定
         while(listNode != null){
             stack.push(listNode.val);
@@ -79,11 +79,21 @@ public class QuestionOneDemo {
         while(!stack.isEmpty()){
             res.add(stack.pop());
         }
-        return res;
+        return res;*/
+     ArrayList<Integer> res=new ArrayList<>();
+     Stack<Integer> stack=new Stack<>();
+     while(listNode!=null){
+         stack.push(listNode.val);
+         listNode=listNode.next;
+     }
+     while (!stack.isEmpty()){
+         res.add(stack.pop());
+     }
+     return res;
     }
     //递归
     ArrayList<Integer> res = new ArrayList<Integer>();//一定要在函数之前定义
-    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+    public ArrayList<Integer> printListFromTailToHeadDG(ListNode listNode) {
         if(listNode!=null){
             printListFromTailToHead(listNode.next);    //没有用到printListFromTailToHead的返回值
             res.add(listNode.val);    //这个在递归后面，则可以做到倒序；如果在递归前就是正序

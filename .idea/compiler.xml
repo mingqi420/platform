@@ -6,22 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="linkedList" />
         <module name="shiro" />
         <module name="thread" />
         <module name="web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="linkedList" target="8" />
-      <module name="platform" target="8" />
-      <module name="shiro" target="8" />
-      <module name="thread" target="8" />
+      <module name="link" target="1.8" />
+      <module name="platform" target="1.5" />
+      <module name="shiro" target="1.5" />
+      <module name="thread" target="1.5" />
       <module name="web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="link" options="-parameters" />
       <module name="web" options="-parameters" />
     </option>
   </component>

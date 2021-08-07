@@ -13,12 +13,12 @@ public class test {
     public static void main(String[] args) {
         //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager
         Factory<SecurityManager> factory=new IniSecurityManagerFactory("classpath:shiro.ini");
-        //2、得到SecurityManager实例 并绑定给SecurityUtils
+        //2、得到SecurityManager实例 并绑定给SecurityUtils 这是一个全局的设置，设置一次就可以
         SecurityManager securityManager=factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
         //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
         Subject subject=SecurityUtils.getSubject();
-        UsernamePasswordToken token=new UsernamePasswordToken("zhang","1234");
+        UsernamePasswordToken token=new UsernamePasswordToken("zhang","123");
         System.out.println("token"+token);
         try{
             //4、登录，即身份验证

@@ -114,5 +114,6 @@ public class QuestionFiveDemo {
         // 输出第一个公共节点
         NumberNode commonNode = getFirstCommonNode(node1_1, node2_4);
         System.out.println("第一个公共节点是：" + commonNode.getElement());
+
     }
 }

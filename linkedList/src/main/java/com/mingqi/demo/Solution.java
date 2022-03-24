@@ -85,7 +85,7 @@ public class Solution {
     public ListNode ReverseList(ListNode head) {
         Stack<ListNode> stack = new Stack<ListNode>();
         //把链表节点全部摘掉放到栈中
-        if (head != null) {
+        while (head != null) {
             stack.push(head);
             head = head.next;
         }
@@ -101,6 +101,8 @@ public class Solution {
             node.next = tempNode;
             node = node.next;
         }
+        //最后一个结点就是反转前的头结点，一定要让他的next
+        //等于空，否则会构成环
         node.next = null;
         return dummy;
     }
@@ -166,7 +168,7 @@ public class Solution {
             set.add(pHead1);
             pHead1 = pHead1.next;
         }
-        while (pHead2 != null && !set.contains(pHead2)) {
+        while (pHead2 != null && !set1.contains(pHead2)) {
             set1.add(pHead2);
             if (set.contains(pHead2)) {
                 return pHead2;
@@ -208,8 +210,10 @@ public class Solution {
             return null;
         }
         /**
-         * 每遍历一个结点就把该结点的下一指针指向标记结点（我自己新建了一个结点，因为是比较地址值不是val所以建立的结点一定是独一无二的）。
-         * 当遍历到某个结点的下一指针为标志结点说明，这个结点遍历过一次，为环入口结点。如果先遍历到null结点表示没有环。
+         * 每遍历一个结点就把该结点的下一指针指向标记结点（我自己新建了一个结点，
+         * 因为是比较地址值不是val所以建立的结点一定是独一无二的）。
+         * 当遍历到某个结点的下一指针为标志结点说明，这个结点遍历过一次，
+         * 为环入口结点。如果先遍历到null结点表示没有环。
          */
         // 新建标志结点
         ListNode sign=new ListNode(1);
